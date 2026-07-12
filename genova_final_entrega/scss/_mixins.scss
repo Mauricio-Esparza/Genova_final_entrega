@@ -1,0 +1,16 @@
+@use "variables" as *;
+
+@mixin flex-columna {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin transicion($propiedad: all, $duracion: 0.3s) {
+  transition: $propiedad $duracion ease;
+}
+
+@mixin respond($ancho) {
+  @media (max-width: $ancho) {
+    @content;
+  }
+}

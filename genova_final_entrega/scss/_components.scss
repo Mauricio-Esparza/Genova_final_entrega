@@ -1,0 +1,112 @@
+@use "sass:color";
+@use "variables" as *;
+@use "mixins" as *;
+
+%superficie-elevada {
+  overflow: hidden;
+  background-color: $color-blanco;
+  border-radius: $radio-tarjeta;
+  box-shadow: $sombra-tarjeta;
+}
+
+.navbar {
+  background-color: $color-principal;
+
+  .navbar-brand,
+  .nav-link { color: $color-texto; }
+
+  a:hover { background-color: color.adjust($color-principal, $lightness: -10%); }
+}
+
+.footerRedes {
+  text-align: center;
+  padding: 30px;
+  background-color: $color-principal;
+  color: $color-blanco;
+}
+
+a {
+  display: inline-block;
+  color: $color-blanco;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  @include transicion;
+
+  &:hover {
+    color: color.adjust($color-fondo, $lightness: 2%);
+    transform: scale(1.05);
+  }
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.catalogo {
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+
+.catalogo__encabezado {
+  max-width: 680px;
+  margin: 0 auto 36px;
+  text-align: center;
+
+  h1 {
+    color: $color-secundario;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 12px;
+  }
+
+  p { margin-bottom: 0; }
+}
+
+.catalogo .producto {
+  @extend %superficie-elevada;
+  @include flex-columna;
+  @include transicion(transform, 0.25s);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba($color-texto, 0.18);
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.producto__contenido {
+  @include flex-columna;
+  flex: 1;
+  padding: 20px;
+
+  h2 {
+    color: $color-secundario;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+.contacto .btn-primary {
+  background-color: $color-principal;
+  border-color: $color-principal;
+
+  &:hover {
+    background-color: color.adjust($color-principal, $lightness: -10%);
+    border-color: color.adjust($color-principal, $lightness: -10%);
+  }
+}
