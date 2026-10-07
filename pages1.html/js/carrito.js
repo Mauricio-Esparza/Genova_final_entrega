@@ -1,13 +1,13 @@
-// --- Funciones del carrito con localStorage ---
+
 function addToCart(product, price) {
-  // Recuperar carrito existente o crear uno nuevo
+ 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   cart.push({ product, price });
   localStorage.setItem("cart", JSON.stringify(cart));
   alert(`${product} agregado al carrito ✅`);
 }
 
-// Renderizar carrito en carrito.html
+
 function renderCart() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   let total = cart.reduce((sum, item) => sum + item.price, 0);
@@ -25,7 +25,7 @@ function renderCart() {
 
   totalSpan.textContent = total;
 
-  // Botón WhatsApp
+
   const btnWhatsapp = document.getElementById("btn-whatsapp");
   if (btnWhatsapp) {
     btnWhatsapp.onclick = () => {
@@ -37,7 +37,7 @@ function renderCart() {
   }
 }
 
-// Ejecutar renderCart automáticamente en carrito.html
+
 window.onload = () => {
   if (document.getElementById("cart")) {
     renderCart();
